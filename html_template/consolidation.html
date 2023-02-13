@@ -1,0 +1,615 @@
+<style>
+  #image_text2{
+    white-space: pre-wrap;
+  }
+  h3{
+    margin-top: 10px;
+  }
+
+  ul.custom {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.custom li.custom {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block;
+    position: relative;
+    white-space: initial;
+  }
+
+  custom:hover {
+    background-color: #eee;
+  }
+
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    padding: 4px 6px;
+    color: black;
+    transform: translate(0%, -50%);
+  }
+
+  .close:hover {background: #bbb;}
+</style>
+<div class="row skeleton" id="skeleton" style="margin-top:-60px; margin-bottom: -60px;"> <!-- Start Skeleton Row-->
+  <br>
+  <br>
+  <div class="container container_1">
+    <div class="row">
+      <div class="col-lg-4">
+        <!--- <a id="link"><img style="margin-top: 1.5em; margin-left: 0; margin-right: 0;" id="photo" src=""  width="352" height="400" ></a>-->
+        <h3>Text to perform selection on:</h3>
+        <div id="image_text2" style="font-size:24px; width:352px; overflow-wrap: break-word; border-style: double;">Image Text </div>
+        <h3>Notes:</h3>
+        <textarea id="edit_text" row="5" col="60" style="width: 350px;height: 250px; resize: none;" id="image_style_field" name="image_style_field"></textarea>
+      </div><!-- End of Photo DIV (columnt) -->
+      <div id="answers_data">
+        <div class="col-lg-4">
+          <div id="text_tech">
+            <h3 class="popovers" data-toggle="popover" title="aaa" data-content="Stating that a claim is true simply because a valid authority or expert on the issue said it was true, without any other supporting evidence offered. We consider the special case in which the reference is not an authority or an expert in this technique, altough it is referred to as Testimonial in literature. <a href='https://propaganda.qcri.org/annotations/definitions.html' title='Technique definitions'>Technique definitions</a>" data-original-title="Technique definitions">Techniques in the text</h3>
+            <label for="loadedlang"><input data-id="loadedlang" type="radio" name="tags" value="Loaded Language"/>
+              Loaded Language</label><br>
+            <label for="appealtofear"><input data-id="appealtofear" type="radio" name="tags" value="Appeal to fear/prejudice"/>
+              Appeal to fear/prejudice</label>
+            <br>
+            <label for="namecalling"><input data-id="namecalling" type="radio" name="tags" value="Name calling"/>
+              Name calling/Labeling</label><br>
+            <label for="flagwaving"><input data-id="flagwaving" type="radio" name="tags" value="Flag-waving"/>
+              Flag-waving</label>
+            <br>
+            <label for="doubt"><input data-id="doubt" type="radio" name="tags" value="Doubt"/>
+              Doubt</label>
+            <br>
+            <label for="exaggeration"><input data-id="exaggeration" type="radio" name="tags" value="Exaggeration/Minimisation"/>
+              Exaggeration/Minimisation</label><br>
+            <label for="slogans"><input data-id="slogans" type="radio" name="tags" value="Slogans"/>
+              Slogans</label>
+            <br>
+            <label for="oversimpl"><input data-id="oversimpl" type="radio" name="tags" value="Causal Oversimplification"/>
+              Causal Oversimplification</label>
+            <br>
+            <label for="cliche"><input data-id="cliche" type="radio" name="tags" value="Thought-terminating cliché"/>
+              Thought-terminating cliché</label>
+            <br>
+            <label for="appeal_auth"><input data-id="appeal_auth" type="radio" name="tags" value="Appeal to authority" />
+              Appeal to authority</label>
+            <br>
+            <label for="blackwhite"><input data-id="blackwhite" type="radio" name="tags" value="Black-and-white Fallacy/Dictatorship"/>
+              Black-and-white Fallacy/Dictatorship</label><br>
+            <label for="hitlerum"><input data-id="hitlerum" type="radio" name="tags" value="Reductio ad hitlerum"/>
+              Reductio ad hitlerum</label>
+            <br>
+            <label for="whatabout"><input data-id="whatabout" type="radio" name="tags" value="Whataboutism"/>
+              Whataboutism</label>
+            <br>
+            <label for="redherring"><input data-id="redherring" type="radio" name="tags" value="Presenting Irrelevant Data (Red Herring)"/>
+              Presenting Irrelevant Data (Red Herring)</label>
+            <br>
+            <label for="straw"><input data-id="straw" type="radio" name="tags" value="Misrepresentation of Someone's Position (Straw Man)"/>
+              Misrepresentation of Someone's Position (Straw Man)</label>
+            <br>
+            <label for="confusion"><input data-id="confusion" type="radio" name="tags" value="Obfuscation, Intentional vagueness, Confusion" />
+              Obfuscation, Intentional vagueness, Confusion</label><br>
+            <label for="bandwagon"><input data-id="bandwagon" type="radio" name="tags" value="Bandwagon"/>
+              Bandwagon</label><br>
+            <label for="repetition"><input data-id="repetition" type="radio" name="tags" value="Repetition" />
+              Repetition</label><br>
+            <label for="smears"><input data-id="smears" type="radio" name="tags" value="Smears" />
+              Smears</label><br>
+            <label for="virtue"><input data-id="virtue" type="radio" name="tags" value="Glittering generalities (Virtue)" />
+              Glittering generalities (Virtue)</label><br>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div id="selected" class="col-lg-4">
+        <h3>Currently selected:</h3>
+        <ul id="selections" class="custom">
+        </ul>
+      </div>
+    </div>
+    <div class="row col-lg-12">
+      <center>
+        <a href="https://propaganda.qcri.org/annotations/definitions.html" target="_blank"><h3>Definitions of propaganda techniques in text</h3></a>
+      </center>
+
+      <!-- Feedback items for the user -->
+      <div class="d-flex text-center" id="next"> <!-- Start DIV for the submission buttons -->
+        <!-- If the user clicks this button, the saved answer will be value="yes"-->
+        <button class="btn btn-info btn-lg" id="btn-next" value='Next'><i class="icon icon-white icon-thumbs-up"></i> Next</button>
+
+        <!---<button class="btn btn-success btn-lg"  id="clear" value='Clear'><i class="icon icon-white icon-thumbs-up"></i> Clear selection</button>--->
+        <!-- If the user clicks this button, the saved answer will be value="no"-->
+      </div><!-- End of DIV for the submission buttons -->
+    </div>
+
+  </div>
+  <div class="container container_2" style="display:none;">
+    <div class="row">
+      <div class="col-lg-4">
+        <a id="link" target="_blank"><img style="margin-top: 1.5em; margin-left: 0; margin-right: 0;" id="photo" src=""  width="352" height="400" ></a>
+        <a id="_url" style="margin-left: 307px;" target="_blank">Source</a>
+        <div id="image_text3" class="text-center" style="font-size:24px; width:352px; word-wrap: break-word;">Image Text adsfasdfasdjflkasfdjsafksajdlkfjsadkf;lsadljf;ldsakfsafsadfadsfasdfasdjflkasfdjsafksajdlkfjsadkf;lsadljf;ldsakfsafsadfadsfasdfasdjflkasfdjsafksajdlkfjsadkf;lsadljf;ldsakfsafsadf</div> <!-- The question will be loaded here -->
+        <h3>Notes:</h3>
+        <textarea id="edit_text2" row="5" col="60" style="width: 350px;height: 250px; resize: none;" id="image_style_field" name="image_style_field"></textarea>
+      </div><!-- End of Photo DIV (columnt) -->
+      <div id='text_techniques' class="col-lg-4">
+        <h3>Techniques in the text</h3> 
+        <label for="loadedlang"><input data-id="loadedlang" type="checkbox" name="tags2" value="Loaded Language"/>
+          Loaded Language</label><br>
+        <label for="appealtofear"><input data-id="appealtofear" type="checkbox" name="tags2" value="Appeal to fear/prejudice"/>
+          Appeal to fear/prejudice</label>
+        <br>
+        <label for="namecalling"><input data-id="namecalling" type="checkbox" name="tags2" value="Name calling/Labeling"/>
+          Name calling/Labeling</label><br>
+        <label for="flagwaving"><input data-id="flagwaving" type="checkbox" name="tags2" value="Flag-waving"/>
+          Flag-waving</label>
+        <br>
+        <label for="doubt"><input data-id="doubt" type="checkbox" name="tags2" value="Doubt"/>
+          Doubt</label>
+        <br>
+        <label for="exaggeration"><input data-id="exaggeration" type="checkbox" name="tags2" value="Exaggeration/Minimisation"/>
+          Exaggeration/Minimisation</label><br>
+        <label for="slogans"><input data-id="slogans" type="checkbox" name="tags2" value="Slogans"/>
+          Slogans</label>
+        <br>
+        <label for="oversimpl"><input data-id="oversimpl" type="checkbox" name="tags2" value="Causal Oversimplification"/>
+          Causal Oversimplification</label>
+        <br>
+        <!---<label for="repetition"><input data-id="repetition" type="checkbox" name="tags2" value="Repetition"/>
+Repetition</label>
+<br>--->
+        <label for="cliche"><input data-id="cliche" type="checkbox" name="tags2" value="Thought-terminating cliché"/>
+          Thought-terminating cliché</label>
+        <br>
+        <label for="appeal_auth"><input data-id="appeal_auth" type="checkbox" name="tags2" value="Appeal to authority" />
+          Appeal to authority</label>
+        <br>
+        <label for="blackwhite"><input data-id="blackwhite" type="checkbox" name="tags2" value="Black-and-white Fallacy/Dictatorship"/>
+          Black-and-white Fallacy/Dictatorship</label><br>
+        <label for="hitlerum"><input data-id="hitlerum" type="checkbox" name="tags2" value="Reductio ad hitlerum"/>
+          Reductio ad hitlerum</label>
+        <br>
+        <label for="whatabout"><input data-id="whatabout" type="checkbox" name="tags2" value="Whataboutism"/>
+          Whataboutism</label>
+        <br>
+        <label for="redherring"><input data-id="redherring" type="checkbox" name="tags2" value="Presenting Irrelevant Data (Red Herring)"/>
+          Presenting Irrelevant Data (Red Herring)</label>
+        <br>
+        <label for="straw"><input data-id="straw" type="checkbox" name="tags2" value="Misrepresentation of Someone's Position (Straw Man)"/>
+          Misrepresentation of Someone's Position (Straw Man)</label>
+        <br>
+        <label for="confusion"><input data-id="confusion" type="checkbox" name="tags2" value="Obfuscation, Intentional vagueness, Confusion" />
+          Obfuscation, Intentional vagueness, Confusion</label><br>
+        <label for="bandwagon"><input data-id="bandwagon" type="checkbox" name="tags2" value="Bandwagon"/>
+          Bandwagon</label><br>
+        <label for="repetition"><input data-id="repetition" type="checkbox" name="tags2" value="Repetition" />
+          Repetition</label><br>
+        <label for="smears"><input data-id="smears" type="checkbox" name="tags2" value="Smears"/>
+          Smears</label>
+        <br>
+        <label for="virtue"><input data-id="virtue" type="checkbox" name="tags2" value="Glittering generalities (Virtue)"/>
+          Glittering generalities (Virtue)</label>
+        <br>
+      </div>
+      <div id='image_techniques' class="col-lg-4">
+        <h3>Techniques in the image</h3>
+        <label for="transfer"><input data-id="transfer" type="checkbox" name="tags2" value="Transfer"/>
+          Transfer</label>
+        <br>
+        <label for="img_appeal_emotions"><input data-id="img_appeal_emotions" type="checkbox" name="tags2" value="Appeal to (Strong) Emotions"/>
+          Appeal to (Strong) Emotions</label>
+        <br>
+      </div>
+    </div>
+
+    <div class="row col-lg-12">
+      <center>
+        <a href="https://docs.google.com/document/d/1kdBbFwq-OVjNVILBOhereiVL-V6Mig838-FEwIZUxYw/edit#" target="_blank"><h3><strong>Definitions of propaganda techniques</strong></h3></a>
+      </center>
+
+      <!-- Feedback items for the user -->
+      <div class="d-flex text-center" id="submit" id="submit"> <!-- Start DIV for the submission buttons -->
+        <!-- If the user clicks this button, the saved answer will be value="yes"-->
+        <button class="btn btn-info btn-lg" id="btn-prev" style="margin-right:80px;"value='Prev'><i class="icon icon-white icon-thumbs-up"></i> Previous</button>
+        <button class="btn btn-success btn-submit btn-lg"  value='Submit'><i class="icon icon-white icon-thumbs-up"></i> Submit</button>
+        <!-- If the user clicks this button, the saved answer will be value="no"-->
+      </div><!-- End of DIV for the submission buttons -->
+    </div>
+  </div>
+</div><!-- End of Skeleton Row -->
+<script src="http://52.174.125.72:5001/static/css/annotator-full.min.js"></script>
+<script type="text/javascript">
+  'use strict';
+  var entityPositions = [];
+  var currentTag = {};
+  var colors = {
+    'loadedlang': '#ba1717',
+    'appealtofear': '#8CE8AD',
+    'namecalling' : '#CC00CC',
+    'flagwaving': '#FF4500',
+    'doubt' : '#0000CC',
+    'exaggeration':'#4EBEEB',
+    'slogans':'#1777CF',
+    'oversimpl':'#FFB46A',
+    'cliche':'#109090',
+    'appeal_auth': '#FF9A91',
+    'blackwhite':'#D6FF00',
+    'dictator':'#FF33FF',
+    'hitlerum':'#CC9933',
+    'whatabout':'#66CC00',
+    'redherring':'#BC7ED3',
+    'straw':'#CCCC33',
+    'confusion':'#FF0000',
+    'bandwagon':'#FFA500',
+    'repetition':'#6600CC',
+    'smears' : '#660033',
+    'virtue' : '#006633'
+  }
+  var technique_name_to_id = {
+    'Loaded Language': 'loadedlang',
+    'Appeal to fear/prejudice': 'appealtofear',
+    'Name calling/Labeling' : 'namecalling',
+    'Flag-waving': 'flagwaving',
+    'Doubt' : 'doubt',
+    'Exaggeration/Minimisation':'exaggeration',
+    'Slogans':'slogans',
+    'Causal Oversimplification':'oversimpl',
+    'Thought-terminating cliché':'cliche',
+    'Appeal to authority': 'appeal_auth',
+    'Black-and-white Fallacy/Dictatorship':'blackwhite',
+    'Dictatorship':'dictator',
+    'Reductio ad hitlerum':'hitlerum',
+    'Whataboutism':'whatabout',
+    'Presenting Irrelevant Data (Red Herring)':'redherring',
+    'Misrepresentation of Someone\'s Position (Straw Man)':'straw',
+    'Obfuscation, Intentional vagueness, Confusion':'confusion',
+    'Bandwagon':'bandwagon',
+    'Repetition':'repetition',
+    'Smears' : 'smears',
+    'Glittering generalities (Virtue)' : 'virtue'
+  }
+  var debounce = debounce || function (func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
+  function hideAll() {
+    $("[data-toggle=popover]").each(function () {
+      var popover = $(this).data('bs.popover');
+      if (popover.tip().is(':visible')) popover.hide();
+    });
+  }
+
+  $("[data-toggle=popover]")
+  .popover({animation: false, container: document.body, delay: 50, html: true, trigger: 'manual', placement: 'auto right'})
+  .each(function () {
+    var popover = $(this).data('bs.popover');
+    var $tip = popover.tip();
+    var delay = popover.options.delay || 0;
+    var showDelay = delay.show || delay || 0;
+    var hideDelay = delay.hide || delay || 0;
+    var showTimeout = null
+    var hideTimeout = null;
+
+
+    $(this).add($tip).hover(function show() {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      } else if (!$tip.is(':visible')) {
+        hideAll();
+        showTimeout = setTimeout(function () {
+          popover.show();
+          showTimeout = null;
+        }, showDelay);
+      }
+    }, function hide() {
+      if (showTimeout) {
+        clearTimeout(showTimeout);
+        showTimeout = null;
+      } else if ($tip.is(':visible')) {
+        hideTimeout = setTimeout(function () {
+          popover.hide();
+          hideTimeout = null;
+        }, hideDelay);
+      }
+    });
+  });
+
+  $(window).on('scroll resize', debounce(hideAll, 100, true));
+  (function() {
+    pybossa.taskLoaded(function(task, deferred) {
+      deferred.resolve(task);
+    });
+
+    $(document).ready(function () {
+      console.log("ready!");
+      console.log( $.each(colors,function(k, v){console.log($('label[for=' + k +']'))}))
+      $.each(colors,function(k, v){$('label[for=' + k +']').first().attr('style','color:#fff; background-color:'+ v)})
+      $("input[type=radio][name=tags]").change(function () {
+        console.log($(this).data(), $(this).val())
+        var item = $(this).data('id')
+        var color =  getColor($(this).data('id'));
+        console.log($('input[data-id=' + item +']'))
+        //label[for='"+$element.attr('id')+"']
+        //$('label[for=' + item +']').attr('style','color:#fff; background-color:'+ color)
+        currentTag["color"] = color;
+        currentTag["name"] = $(this).val();
+        currentTag["id"] = $(this).data('id');
+
+      });
+      $(document).on('click','#clear', function(){
+        $('input[name=tags]:checked').attr('checked',false);
+      });
+      $(document).on('mouseup', '#image_text2', function (evt) {
+        if($('input[type=radio][name=tags]:checked').length != 0) {
+          this.startOffset = 0;
+          this.endOffset = 0;
+          this.entityPositions = entityPositions;
+          this.currentTag = currentTag;
+          var that = this;
+          setRange(that);
+        }
+      });
+      $(document).on('click', '#save', function(){
+        saveEntity(entityPositions);
+      });
+
+    });
+
+    function getColor(id) {
+      //var letters = '0123456789ABCDEF';
+      //var color = '#';
+      //for (var i = 0; i < 6; i++) {
+      //  color += letters[Math.floor(Math.random() * 16)];
+      //}
+      //return color;
+      return colors[id]
+
+    };
+    function untag(obj, technique) {
+      if($('input[type=radio][name=tags]:checked').length === 0) { 
+        var text = obj.innerText;
+        var start = obj.getAttribute('data-startOffset');
+        var end = obj.getAttribute('data-endOffset');
+        console.log(removeEntity(start, end,obj.entityPositions))
+        entityPositions = removeEntity(start, end, technique);
+        obj.replaceWith(document.createTextNode(text));
+      }
+    };
+    function pushIfAbsent(element){
+      for(var el of entityPositions){
+        console.log(el)
+        console.log(element)
+        if(el.start === element.start && el.end === element.end && el.technique === element.technique){
+          console.log('aaaaaa')
+          console.log(el)
+          return false;
+        }
+      }
+      entityPositions.push(element)
+      return true;
+    }
+    function removeEntity(start, end, technique){
+      return entityPositions.filter(item => !(item["start"] == start && item["end"] == end && item["technique"] == technique));
+    }
+    function stringify_withSpaces(obj) {
+      let result = JSON.stringify(obj, null, 1); // stringify, with line-breaks and indents
+      //result = result.replace('/^ +/gm', " "); // remove all but the first space for each line
+      //result = result.replace('/\n/g', ""); // remove line-breaks
+      //result = result.replace('/{ /g', "{").replace('/ }/g', "}"); // remove spaces between object-braces and first/last props
+      //result = result.replace('/\[ /g', "[").replace('/ \]/g', "]"); // remove spaces between array-brackets and first/last items
+      return result;
+    }
+    function setRange(that){
+      let start;
+      let end;
+      let selected_word;
+      let range;
+      if (window.getSelection) {
+        range = window.getSelection().getRangeAt(0);
+        const preSelectionRange = range.cloneRange();
+        selected_word = range.toString();
+        preSelectionRange.selectNodeContents(that);
+        preSelectionRange.setEnd(range.startContainer, range.startOffset);
+        console.log(preSelectionRange.toString().length)
+        start = preSelectionRange.toString().length;
+        end = start + selected_word.length;
+      } else if (document.selection && document.selection.type !== 'Control') {
+        const selectedTextRange = document.selection.createRange();
+        const preSelectionTextRange = document.body.createTextRange();
+        preSelectionTextRange.moveToElementText(that);
+        preSelectionTextRange.setEndPoint('EndToStart', selectedTextRange);
+        start = preSelectionTextRange.text.length;
+        end = start + selectedTextRange.text.length;
+      }
+      that.startOffset = start;
+      that.endOffset = end;
+      that.text = selected_word;
+      var isValidRange = validRange(that);
+      var el = {'start': that.startOffset, 
+                'end': that.endOffset,
+                'technique': currentTag.name,
+                'text': that.text,
+               }
+      if (isValidRange){
+        var pushed = pushIfAbsent(el)
+        if(pushed){
+          var tag_span = document.createElement("span");
+          tag_span.setAttribute('class', 'tag');
+          tag_span.setAttribute('data-startOffset', that.startOffset);
+          tag_span.setAttribute('data-endOffset', that.endOffset);
+          tag_span.setAttribute('style', 'color:#fff; background-color:'+ that.currentTag.color);
+          tag_span.innerHTML = that.text;
+          tag_span.onclick = function() {untag(tag_span, currentTag.name);} // for IE
+          var close = document.createElement("span");
+          var tag_info = document.createElement("li");
+          close.setAttribute('class','close')
+          close.innerHTML = '&times;'
+          close.onclick = function() {removeElement(tag_span,tag_info, el.technique);}
+          tag_info.setAttribute('class','custom')
+          tag_info.innerHTML = stringify_withSpaces(el)
+          tag_info.append(close)
+          $("#selections").append(tag_info)
+          range.deleteContents();
+          range.insertNode(tag_span);
+        }
+      }
+    }
+    function removeElement(selection,info, technique){
+      var text = selection.innerText;
+      var start = selection.getAttribute('data-startOffset');
+      var end = selection.getAttribute('data-endOffset');
+      entityPositions = removeEntity(start, end, technique);
+      selection.replaceWith(document.createTextNode(text));
+      info.remove()
+    }
+    function validRange(that) {
+      if (that.startOffset === that.endOffset) {
+        return false;d
+      }
+      if (that.startOffset > that.innerText.length || that.endOffset > that.innerText.length) {
+        return false;
+      }
+      if (that.startOffset < 0 || that.endOffset < 0) {
+        return false;
+      }
+      return true;
+    }
+    pybossa.presentTask(function(task, deferred) {
+      if ( !$.isEmptyObject(task) ) {
+        loadUserProgress();
+        //console.log("ADSDASDASDASDASDSADSAd"+ JSON.stringify(task.info['0']))
+        //console.log("http://52.174.125.72:5001/static/img/"+task.info['0']['image']+ 'aaa')
+        //$("#link").attr("href", "http://52.174.125.72:5001/static/img/" + task.info['0']['image']).load();
+        //$("#photo").attr('src', "http://52.174.125.72:5001/static/img/" + task.info['0']['image']).load();
+        $('textarea#edit_text').val('')
+        if (!task.info['0']){
+          task.info['0'] = {}
+          task.info['0']['text'] = task.info.text
+          task.info['0']['image'] = task.info.image
+        }
+        $("#image_text2").html(task.info['0'].text)
+        $('#task-id').html(task.id);
+        $('#btn-next').off('click').on('click', function(evt){
+           $('textarea#edit_text2').val('')
+          $('.container_1').hide()
+          $('.container_2').show()
+          console.log(task.info)
+          $("#_url").attr("href", task.info.link)
+          $("#link").attr("href", "http://52.174.125.72:5001/static/img/edit_2nd_batch/" + task.info[0].image).load();
+          $("#photo").attr('src', "http://52.174.125.72:5001/static/img/edit_2nd_batch/" + task.info[0].image).load();
+          $("#image_text3").html(task.info[0].text)
+          $('#task-id').html(task.id)
+          var answers = entityPositions
+          answers.forEach(e => {if(e.technique == 'Name calling') e.technique = 'Name calling/Labeling'})
+        answers.map(e=> {var inp = $('input[data-id=' + technique_name_to_id[e.technique]+'][name=tags2]');inp[0].checked = true;inp[0].disabled=true})
+    })
+    $('#btn-prev').off('click').on('click', function(evt){
+      console.log("PREVVV")
+       $('textarea#edit_text').val('')
+      $('.container_2').hide()
+      $('.container_1').show()
+      $('input[name=tags]:checked').attr('checked',false);
+      $('input[name=tags2]:checked:enabled').attr('checked',false);
+      $('input[name=tags2]:checked:disabled').attr({'disabled':false, 'checked':false});
+    })
+    $('.btn-submit').off('click').on('click', function(evt) {
+      var submit = $(evt.target).attr("value");
+      console.log($('#skeleton input[type=checkbox]:checked'))//Works
+      console.log($('#skeleton textarea'))//Works
+
+      var text_anno_new = $('#text_techniques > label > input:checked').toArray().filter(e => e.disabled == false).map(e => e.value)
+      var text_anno_consolidated = JSON.stringify(entityPositions)
+      var image_anno = $('#image_techniques > label > input:checked').toArray().map(e => e.value)
+      console.log(text_anno_new)
+      console.log(image_anno)
+      var final_anno = {}
+      final_anno['image'] = task.info[0].image
+      final_anno['text'] = task.info[0].text
+      if(task.info[0].link !== undefined){
+        final_anno['link'] = task.info[0].link
+      }
+      var notes = []
+      notes.push($('#edit_text')[0]['value'])
+      notes.push($('#edit_text2')[0]['value'])
+      final_anno['notes'] = notes.join('\n%%%\n')
+      final_anno['text_tech_span'] = text_anno_consolidated
+      final_anno['image_anno'] = image_anno
+      final_anno['image_anno'].push.apply( final_anno['image_anno'],text_anno_new)
+
+      if (typeof submit != 'undefined') {
+        pybossa.saveTask( task.id, final_anno ).done(
+          function( data ) {
+            // Show the feedback div
+            console.log("Hello")
+            console.log(final_anno)
+            $("#success").fadeIn();
+            $("#selections").empty()
+            entityPositions =[]
+            $('.container_2').hide()
+            $('.container_1').show()
+            $('input[name=tags]:checked').attr('checked',false);
+            $('input[name=tags2]:checked:enabled').attr('checked',false);
+            $('input[name=tags2]:checked:disabled').attr({'disabled':false, 'checked':false});
+            deferred.resolve();
+            // Fade out the pop-up after a 1000 miliseconds
+            setTimeout(function() { $("#success").fadeOut() }, 1000);
+          }
+        );
+        $("#loading").fadeIn(500);
+        if ($("#disqus_thread").is(":visible")) {
+          $('#disqus_thread').toggle();
+          $('.btn-disqus').toggle();
+        }
+      }
+      else {
+        $("#error").show();
+      }
+    });
+    $("#loading").hide();
+  }
+   else {
+   $(".skeleton").hide();
+  $("#loading").hide();
+  $("#finish").fadeIn(500);
+  }
+  });
+
+  function loadUserProgress() {
+    pybossa.userProgress('merged_anno').done(function(data){
+      var pct = Math.round((data.done*100)/data.total);
+      $("#progress").css("width", pct.toString() +"%");
+      $("#progress").attr("title", pct.toString() + "% completed!");
+      $("#progress").tooltip({'placement': 'left'});
+      $("#total").text(data.total);
+      $("#done").text(data.done);
+      console.log('Dataaa')
+      console.log(data)
+      console.log(pct)
+    });
+  }
+  pybossa.run('merged_anno')
+  })();
+</script>
